@@ -6,7 +6,7 @@
 #    By: jterrazz <jterrazz@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/07/04 16:05:42 by jterrazz          #+#    #+#              #
-#    Updated: 2019/07/04 21:41:14 by jterrazz         ###   ########.fr        #
+#    Updated: 2019/07/04 22:20:26 by jterrazz         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,10 +18,12 @@ SRC_PATH = src
 T_SRC_PATH = test
 T_BUILD_PATH = $(TMP_PATH)/test
 
-SOURCES = ft_bzero.s ft_isupper.s ft_islower.s ft_isalpha.s ft_isdigit.s ft_isalnum.s
+SOURCES = ft_bzero.s ft_isupper.s ft_islower.s ft_isalpha.s ft_isdigit.s \
+	ft_isalnum.s ft_isascii.s ft_isprint.s ft_toupper.s ft_tolower.s
 OBJECTS = $(SOURCES:%.s=$(BUILD_PATH)/%.o)
 
-T_SOURCES = main.c ft_bzero.c ft_isupper.c ft_islower.c ft_isalpha.c ft_isdigit.c ft_isalnum.c
+T_SOURCES = main.c ft_bzero.c ft_isupper.c ft_islower.c ft_isalpha.c \
+	ft_isdigit.c ft_isalnum.c ft_isascii.c ft_isprint.c ft_toupper.c ft_tolower.c
 T_OBJECTS = $(T_SOURCES:%.c=$(T_BUILD_PATH)/%.o)
 
 # **************************************************************************** #

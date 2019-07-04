@@ -20,5 +20,9 @@ int main(int argc, char **argv)
 	// test_ft_isupper();
 	// test_ft_islower();
 	// test_ft_isdigit();
-	test_ft_isalnum();
+	// test_ft_isalnum();
+	// test_ft_isascii();
+	// test_ft_isprint();
+	test_ft_toupper();
+	test_ft_tolower();
 }

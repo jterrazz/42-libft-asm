@@ -11,5 +11,9 @@ void test_ft_isupper();
 void test_ft_islower();
 void test_ft_isdigit();
 void test_ft_isalnum();
+void test_ft_isascii();
+void test_ft_isprint();
+void test_ft_toupper();
+void test_ft_tolower();
 
 #endif
