@@ -1,25 +1,22 @@
 ; **************************************************************************** ;
 ;                                                                              ;
 ;                                                         :::      ::::::::    ;
-;    ft_toupper.s                                       :+:      :+:    :+:    ;
+;    ft_memset.s                                        :+:      :+:    :+:    ;
 ;                                                     +:+ +:+         +:+      ;
 ;    By: jterrazz <jterrazz@student.42.fr>          +#+  +:+       +#+         ;
 ;                                                 +#+#+#+#+#+   +#+            ;
-;    Created: 2019/07/04 22:08:53 by jterrazz          #+#    #+#              ;
-;    Updated: 2019/07/05 00:11:59 by jterrazz         ###   ########.fr        ;
+;    Created: 2019/07/05 00:14:22 by jterrazz          #+#    #+#              ;
+;    Updated: 2019/07/05 00:48:36 by jterrazz         ###   ########.fr        ;
 ;                                                                              ;
 ; **************************************************************************** ;
 
-global _ft_toupper
+global _ft_memset
 
-extern _ft_islower
-
-_ft_toupper:
-	call _ft_islower
-	test rax, rax
-	mov rax, rdi
-	jz return
-	sub rax, 32
-
-return:
+_ft_memset:
+	push rdi
+	mov al, sil
+	mov rcx, rdx
+	cld
+	rep stosb
+	pop rax
 	ret

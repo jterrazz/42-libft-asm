@@ -6,7 +6,7 @@
 ;    By: jterrazz <jterrazz@student.42.fr>          +#+  +:+       +#+         ;
 ;                                                 +#+#+#+#+#+   +#+            ;
 ;    Created: 2019/07/04 22:25:13 by jterrazz          #+#    #+#              ;
-;    Updated: 2019/07/05 00:06:26 by jterrazz         ###   ########.fr        ;
+;    Updated: 2019/07/05 00:11:43 by jterrazz         ###   ########.fr        ;
 ;                                                                              ;
 ; **************************************************************************** ;
 
@@ -26,32 +26,31 @@ NULL_MSG_LEN: equ 6
 section .text
 
 _ft_puts:
-test rdi, rdi
-jz puts_null
+	test rdi, rdi
+	jz puts_null
 
 puts:
-push rdi
-call _ft_strlen
-mov rdx, rax
-pop rdi
-mov rax, SYS_WRITE
-mov rsi, rdi
-mov rdi, STDOUT
-syscall
-jmp put_lr
+	push rdi
+	call _ft_strlen
+	mov rdx, rax
+	pop rdi
+	mov rax, SYS_WRITE
+	mov rsi, rdi
+	mov rdi, STDOUT
+	syscall
+	jmp put_lr
 
 puts_null:
-mov rax, SYS_WRITE
-lea rsi, [rel NULL_MSG]
-mov rdi, STDOUT
-mov rdx, NULL_MSG_LEN
-syscall
+	mov rax, SYS_WRITE
+	lea rsi, [rel NULL_MSG]
+	mov rdi, STDOUT
+	mov rdx, NULL_MSG_LEN
+	syscall
 
 put_lr:
-mov rax, SYS_WRITE
-lea rsi, [rel LR_MSG]
-mov rdi, STDOUT
-mov rdx, LR_MSG_LEN
-syscall
-
-ret
+	mov rax, SYS_WRITE
+	lea rsi, [rel LR_MSG]
+	mov rdi, STDOUT
+	mov rdx, LR_MSG_LEN
+	syscall
+	ret

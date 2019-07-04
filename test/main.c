@@ -26,5 +26,6 @@ int main(int argc, char **argv)
 	// test_ft_toupper();
 	// test_ft_tolower();
 	// test_ft_strlen();
-	test_ft_puts();
+	// test_ft_puts();
+	// test_ft_memset();
 }

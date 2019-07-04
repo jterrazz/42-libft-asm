@@ -6,7 +6,7 @@
 /*   By: jterrazz <jterrazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/04 14:55:53 by jterrazz          #+#    #+#             */
-/*   Updated: 2019/07/04 23:42:42 by jterrazz         ###   ########.fr       */
+/*   Updated: 2019/07/05 00:27:01 by jterrazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,5 +29,6 @@ int ft_toupper(int c);
 int ft_tolower(int c);
 size_t ft_strlen(const char *s);
 int ft_puts(const char *s);
+void *ft_memset(void *b, int c, size_t len);
 
 #endif

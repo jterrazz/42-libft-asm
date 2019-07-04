@@ -17,5 +17,6 @@ void test_ft_toupper();
 void test_ft_tolower();
 void test_ft_strlen();
 void test_ft_puts();
+void test_ft_memset();
 
 #endif
