@@ -1,24 +1,32 @@
 ; **************************************************************************** ;
 ;                                                                              ;
 ;                                                         :::      ::::::::    ;
-;    ft_bzero.s                                         :+:      :+:    :+:    ;
+;    ft_isalnum.s                                       :+:      :+:    :+:    ;
 ;                                                     +:+ +:+         +:+      ;
 ;    By: jterrazz <jterrazz@student.42.fr>          +#+  +:+       +#+         ;
 ;                                                 +#+#+#+#+#+   +#+            ;
-;    Created: 2019/07/04 20:19:14 by jterrazz          #+#    #+#              ;
-;    Updated: 2019/07/04 20:19:21 by jterrazz         ###   ########.fr        ;
+;    Created: 2019/07/04 21:39:47 by jterrazz          #+#    #+#              ;
+;    Updated: 2019/07/04 21:53:32 by jterrazz         ###   ########.fr        ;
 ;                                                                              ;
 ; **************************************************************************** ;
 
-global _ft_bzero
+global _ft_isalnum
 
-_ft_bzero:
-test rsi, rsi ; Set ZF to test count in not 0
-jz end
-mov byte[rdi], 0
-inc rdi
-dec rsi
-jmp _ft_bzero
+extern _ft_isalpha
+extern _ft_isdigit
 
-end:
+_ft_isalnum:
+call _ft_isalpha
+test rax, rax
+jnz is_alnum
+call _ft_isdigit
+test rax, rax
+jnz is_alnum
+
+is_not_alnum:
+xor rax, rax
+ret
+
+is_alnum:
+mov rax, 1
 ret

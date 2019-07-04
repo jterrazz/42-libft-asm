@@ -1,24 +1,27 @@
 ; **************************************************************************** ;
 ;                                                                              ;
 ;                                                         :::      ::::::::    ;
-;    ft_bzero.s                                         :+:      :+:    :+:    ;
+;    ft_isupper.s                                       :+:      :+:    :+:    ;
 ;                                                     +:+ +:+         +:+      ;
 ;    By: jterrazz <jterrazz@student.42.fr>          +#+  +:+       +#+         ;
 ;                                                 +#+#+#+#+#+   +#+            ;
-;    Created: 2019/07/04 20:19:14 by jterrazz          #+#    #+#              ;
-;    Updated: 2019/07/04 20:19:21 by jterrazz         ###   ########.fr        ;
+;    Created: 2019/07/04 20:27:47 by jterrazz          #+#    #+#              ;
+;    Updated: 2019/07/04 21:48:08 by jterrazz         ###   ########.fr        ;
 ;                                                                              ;
 ; **************************************************************************** ;
 
-global _ft_bzero
+global _ft_isupper
 
-_ft_bzero:
-test rsi, rsi ; Set ZF to test count in not 0
-jz end
-mov byte[rdi], 0
-inc rdi
-dec rsi
-jmp _ft_bzero
+_ft_isupper:
+cmp rdi, 'A'
+jl is_not_upper
+cmp rdi, 'Z'
+jg is_not_upper
 
-end:
+isupper:
+mov rax, 1
+ret
+
+is_not_upper:
+xor rax, rax
 ret

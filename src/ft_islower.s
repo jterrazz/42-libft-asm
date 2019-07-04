@@ -1,24 +1,27 @@
 ; **************************************************************************** ;
 ;                                                                              ;
 ;                                                         :::      ::::::::    ;
-;    ft_bzero.s                                         :+:      :+:    :+:    ;
+;    ft_islower.s                                       :+:      :+:    :+:    ;
 ;                                                     +:+ +:+         +:+      ;
 ;    By: jterrazz <jterrazz@student.42.fr>          +#+  +:+       +#+         ;
 ;                                                 +#+#+#+#+#+   +#+            ;
-;    Created: 2019/07/04 20:19:14 by jterrazz          #+#    #+#              ;
-;    Updated: 2019/07/04 20:19:21 by jterrazz         ###   ########.fr        ;
+;    Created: 2019/07/04 20:28:32 by jterrazz          #+#    #+#              ;
+;    Updated: 2019/07/04 21:48:02 by jterrazz         ###   ########.fr        ;
 ;                                                                              ;
 ; **************************************************************************** ;
 
-global _ft_bzero
+global _ft_islower
 
-_ft_bzero:
-test rsi, rsi ; Set ZF to test count in not 0
-jz end
-mov byte[rdi], 0
-inc rdi
-dec rsi
-jmp _ft_bzero
+_ft_islower:
+cmp rdi, 'a'
+jl is_not_lower
+cmp rdi, 'z'
+jg is_not_lower
 
-end:
+is_lower:
+mov rax, 1
+ret
+
+is_not_lower:
+xor rax, rax
 ret
