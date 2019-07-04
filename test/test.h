@@ -15,5 +15,6 @@ void test_ft_isascii();
 void test_ft_isprint();
 void test_ft_toupper();
 void test_ft_tolower();
+void test_ft_strlen();
 
 #endif
