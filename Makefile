@@ -6,7 +6,7 @@
 #    By: jterrazz <jterrazz@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/07/04 16:05:42 by jterrazz          #+#    #+#              #
-#    Updated: 2019/07/05 02:38:40 by jterrazz         ###   ########.fr        #
+#    Updated: 2019/07/05 13:26:27 by jterrazz         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +27,7 @@ OBJECTS = $(SOURCES:%.s=$(BUILD_PATH)/%.o)
 
 T_SOURCES = main.c ft_bzero.c ft_isupper.c ft_islower.c ft_isalpha.c \
 	ft_isdigit.c ft_isalnum.c ft_isascii.c ft_isprint.c ft_toupper.c ft_tolower.c \
-	ft_strlen.c ft_puts.c ft_memset.c ft_memcpy.c ft_strdup.c ft_cat.c
+	ft_strlen.c ft_puts.c ft_memset.c ft_memcpy.c ft_strdup.c
 T_OBJECTS = $(T_SOURCES:%.c=$(T_BUILD_PATH)/%.o)
 
 # **************************************************************************** #
