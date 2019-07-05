@@ -1,61 +1,55 @@
 ; **************************************************************************** ;
 ;                                                                              ;
 ;                                                         :::      ::::::::    ;
-;    ft_puts.s                                          :+:      :+:    :+:    ;
+;    ft_cat.s                                           :+:      :+:    :+:    ;
 ;                                                     +:+ +:+         +:+      ;
 ;    By: jterrazz <jterrazz@student.42.fr>          +#+  +:+       +#+         ;
 ;                                                 +#+#+#+#+#+   +#+            ;
-;    Created: 2019/07/04 22:25:13 by jterrazz          #+#    #+#              ;
-;    Updated: 2019/07/05 13:23:51 by jterrazz         ###   ########.fr        ;
+;    Created: 2019/07/05 02:36:42 by jterrazz          #+#    #+#              ;
+;    Updated: 2019/07/05 13:24:36 by jterrazz         ###   ########.fr        ;
 ;                                                                              ;
 ; **************************************************************************** ;
 
-global _ft_puts
-
-extern _ft_strlen
+global _ft_cat
 
 section .rodata
+SYS_READ equ 0x2000003
+SYS_WRITE equ 0x2000004
+STDOUT equ 1
 
-SYS_WRITE: equ 0x2000004
-STDOUT: equ 1
-LR_MSG: db 0x0a
-LR_MSG_LEN: equ 1
-NULL_MSG: db "(null)"
-NULL_MSG_LEN: equ 6
+section .bss
+BUFFER resb 255 ; reserve bytes
+.SIZE equ $ - BUFFER ; learn more of this, probably does diff between addresses to get length
 
 section .text
 
-_ft_puts:
-	test rdi, rdi
-	jz puts_null
+_ft_cat:
+	enter 0, 0
 
-puts:
-	push rdi
-	call _ft_strlen
+read:
+	push rdi ; fd
+	mov rax, SYS_READ ; read cmd
+	lea rsi, [rel BUFFER] ; address
+	mov rdx, BUFFER.SIZE ; length
+	syscall
+	jc return
+	; jc return; why ?
+	cmp rax, 0 ; rax -1 if error, 0 if end
+	jle return
+
+write:
+	mov rdi, STDOUT
+	lea rsi, [rel BUFFER]
 	mov rdx, rax
+	mov rax, SYS_WRITE
+	syscall
+	jc return
+	cmp rax, 0
+	jl return
 	pop rdi
-	mov rax, SYS_WRITE
-	mov rsi, rdi
-	mov rdi, STDOUT
-	syscall
-	jc return
-	jmp put_lr
-
-puts_null:
-	mov rax, SYS_WRITE
-	lea rsi, [rel NULL_MSG]
-	mov rdi, STDOUT
-	mov rdx, NULL_MSG_LEN
-	syscall
-	jc return
-
-put_lr:
-	mov rax, SYS_WRITE
-	lea rsi, [rel LR_MSG]
-	mov rdi, STDOUT
-	mov rdx, LR_MSG_LEN
-	syscall
-	jc return
+	jmp read
 
 return:
+	pop rdi
+	leave
 	ret
