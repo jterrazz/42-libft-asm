@@ -1,22 +1,21 @@
 ; **************************************************************************** ;
 ;                                                                              ;
 ;                                                         :::      ::::::::    ;
-;    ft_memset.s                                        :+:      :+:    :+:    ;
+;    ft_memcpy.s                                        :+:      :+:    :+:    ;
 ;                                                     +:+ +:+         +:+      ;
 ;    By: jterrazz <jterrazz@student.42.fr>          +#+  +:+       +#+         ;
 ;                                                 +#+#+#+#+#+   +#+            ;
-;    Created: 2019/07/05 00:14:22 by jterrazz          #+#    #+#              ;
-;    Updated: 2019/07/05 01:14:31 by jterrazz         ###   ########.fr        ;
+;    Created: 2019/07/05 00:49:43 by jterrazz          #+#    #+#              ;
+;    Updated: 2019/07/05 01:14:36 by jterrazz         ###   ########.fr        ;
 ;                                                                              ;
 ; **************************************************************************** ;
 
-global _ft_memset
+global _ft_memcpy
 
-_ft_memset:
+_ft_memcpy:
 	push rdi
-	mov al, sil
-	mov rcx, rdx
+	mov rcx, rdx ; same register params expect length
 	cld
-	rep stosb
+	rep movsb
 	pop rax
 	ret
