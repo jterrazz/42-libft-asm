@@ -6,22 +6,27 @@
 ;    By: jterrazz <jterrazz@student.42.fr>          +#+  +:+       +#+         ;
 ;                                                 +#+#+#+#+#+   +#+            ;
 ;    Created: 2019/07/13 17:47:05 by jterrazz          #+#    #+#              ;
-;    Updated: 2019/07/13 19:45:51 by jterrazz         ###   ########.fr        ;
+;    Updated: 2019/07/14 01:44:24 by jterrazz         ###   ########.fr        ;
 ;                                                                              ;
 ; **************************************************************************** ;
 
 global _ft_putnbr
 
 extern _ft_puts
-extern _putchar ;rmv
 
 section .rodata
-	INT_MIN db "-2147483648"
+	MIN_SIGN: db "-", 0
+	INT_MIN: db "-2147483648"
+	INT_MIN_LENGTH: equ 11
+	SYS_WRITE: equ 0x2000004
+	STDOUT: equ 1
+
+section .data
+	PRINT_CHAR: db "q", 0
 
 section .text
 _ft_putnbr:
 	enter 0, 0
-	mov r12, 0
 	cmp edi, -2147483648
 	je print_min
 
@@ -29,54 +34,61 @@ is_neg:
 	cmp edi, 0
 	jge prep_algo
 
-	; enter 0, 0
-	; add rdi, '-'
-	; call _putchar
-	; leave
+	push rsi
+	push rdx
+	push rax
+	push rdi
+	lea rsi, [rel MIN_SIGN]
+	mov rdx, 1
+	mov rax, SYS_WRITE
+	mov rdi, STDOUT
+	syscall
+
+	pop rdi
+	pop rax
+	pop rdx
+	pop rsi
 
 	imul edi, -1
 
 prep_algo:
+	mov r12, 0 ; count chars
 	mov rax, rdi ; for div
 	mov rbx, 10 ; for div
 
 algo:
-	mov rdx, 0
-	div ebx
+	mov rdx, 0 ; result
+	div rbx
 	push rdx
-
-	enter 0, 0
-	add rdx, '0'
-	mov rdi, rdx
-	call _putchar
-	leave
-
+	push rax
+	pop rax
 	inc r12
-	cmp rdx, 0
-	jle print_chars
+	test rax, rax
+	jz print_char
 	jmp algo
 
-print_chars:
-; 	pop rdi
-; 	dec r12
 print_char:
-	; test r12, r12
-	; jz return
-	; pop rdi
-	;
-	; enter 0, 0
-	; add rdi, '0'
-	; call _putchar
-	; leave
-	;
-	; dec r12
-	; test r12, r12
-	; jz return
-	; jmp print_char
+	test r12, r12
+	jz return
+
+	pop rsi
+	add rsi, '0'
+	mov byte[rel PRINT_CHAR], sil
+	lea rsi, [rel PRINT_CHAR]
+	mov rdx, 1
+	mov rax, SYS_WRITE
+	mov rdi, STDOUT
+	syscall
+
+	dec r12
+	jmp print_char
 
 print_min:
-	lea rdi, [rel INT_MIN]
-	call _ft_puts
+	lea rsi, [rel INT_MIN]
+	mov rdx, INT_MIN_LENGTH
+	mov rax, SYS_WRITE
+	mov rdi, STDOUT
+	syscall
 
 return:
 	leave
