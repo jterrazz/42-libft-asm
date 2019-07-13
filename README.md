@@ -34,5 +34,6 @@ void ft_cat(int fd);
 
 Bonus methods
 ``` c
-char	*ft_strrchr(const char *s, int c);
+char *ft_strrchr(const char *s, int c);
+char *ft_strncpy(char *dst, const char *src, size_t len);
 ```

@@ -6,7 +6,7 @@
 /*   By: jterrazz <jterrazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/04 14:55:53 by jterrazz          #+#    #+#             */
-/*   Updated: 2019/07/13 14:55:59 by jterrazz         ###   ########.fr       */
+/*   Updated: 2019/07/13 15:28:18 by jterrazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,5 +35,6 @@ char *ft_strdup(const char *s1);
 void ft_cat(int fd);
 char *ft_strrchr(const char *s, int c);
 char			*ft_strncpy(char *dst, const char *src, size_t len);
+void			*ft_memalloc(size_t size);
 
 #endif

@@ -23,5 +23,6 @@ void test_ft_strdup();
 void test_ft_cat();
 void test_ft_strrchr();
 void test_ft_strncpy();
+void test_ft_memalloc();
 
 #endif

@@ -31,6 +31,7 @@ int main(int argc, char **argv)
 	// test_ft_memcpy();
 	// test_ft_strdup();
 	// test_ft_cat();
-	test_ft_strncpy();
+	test_ft_memalloc();
+	// test_ft_strncpy();
 	// test_ft_strrchr();
 }
