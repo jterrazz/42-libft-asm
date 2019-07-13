@@ -25,5 +25,7 @@ void test_ft_strrchr();
 void test_ft_strncpy();
 void test_ft_memalloc();
 void test_ft_memmove();
+void test_ft_memdel();
+void test_ft_putnbr();
 
 #endif

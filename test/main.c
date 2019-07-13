@@ -11,10 +11,8 @@ int assert(int cond)
 	return 0;
 }
 
-int main(int argc, char **argv)
+int main(void)
 {
-	(void)argc;
-	(void)argv;
 	// test_ft_bzero();
 	// test_ft_isalpha();
 	// test_ft_isupper();
@@ -32,7 +30,9 @@ int main(int argc, char **argv)
 	// test_ft_strdup();
 	// test_ft_cat();
 	// test_ft_memalloc();
-	test_ft_memmove();
+	test_ft_putnbr();
+	// test_ft_memdel();
+	// test_ft_memmove();
 	// test_ft_strncpy();
 	// test_ft_strrchr();
 }
