@@ -36,4 +36,6 @@ Bonus methods
 ``` c
 char *ft_strrchr(const char *s, int c);
 char *ft_strncpy(char *dst, const char *src, size_t len);
+void			*ft_memalloc(size_t size);
+void			*ft_memmove(void *dst, const void *src, size_t len);
 ```
