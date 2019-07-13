@@ -30,5 +30,6 @@ int main(int argc, char **argv)
 	// test_ft_memset();
 	// test_ft_memcpy();
 	// test_ft_strdup();
-	test_ft_cat();
+	// test_ft_cat();
+	test_ft_strrchr();
 }

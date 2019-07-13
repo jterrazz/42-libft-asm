@@ -21,5 +21,6 @@ void test_ft_memset();
 void test_ft_memcpy();
 void test_ft_strdup();
 void test_ft_cat();
+void test_ft_strrchr();
 
 #endif

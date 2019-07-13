@@ -6,7 +6,7 @@
 #    By: jterrazz <jterrazz@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/07/04 16:05:42 by jterrazz          #+#    #+#              #
-#    Updated: 2019/07/05 13:26:57 by jterrazz         ###   ########.fr        #
+#    Updated: 2019/07/13 14:40:44 by jterrazz         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,12 +22,13 @@ T_BUILD_PATH = $(TMP_PATH)/test
 
 SOURCES = ft_bzero.s ft_isupper.s ft_islower.s ft_isalpha.s ft_isdigit.s \
 	ft_isalnum.s ft_isascii.s ft_isprint.s ft_toupper.s ft_tolower.s \
-	ft_strlen.s ft_puts.s ft_memset.s ft_memcpy.s ft_strdup.s ft_cat.s
+	ft_strlen.s ft_puts.s ft_memset.s ft_memcpy.s ft_strdup.s ft_cat.s \
+	ft_strrchr.s
 OBJECTS = $(SOURCES:%.s=$(BUILD_PATH)/%.o)
 
 T_SOURCES = main.c ft_bzero.c ft_isupper.c ft_islower.c ft_isalpha.c \
 	ft_isdigit.c ft_isalnum.c ft_isascii.c ft_isprint.c ft_toupper.c ft_tolower.c \
-	ft_strlen.c ft_puts.c ft_memset.c ft_memcpy.c ft_strdup.c
+	ft_strlen.c ft_puts.c ft_memset.c ft_memcpy.c ft_strdup.c ft_strrchr.c
 T_OBJECTS = $(T_SOURCES:%.c=$(T_BUILD_PATH)/%.o)
 
 # **************************************************************************** #
@@ -66,7 +67,7 @@ fclean: clean
 	@rm -f $(LIB_NAME)
 	@echo "Fclean \033[33mok\033[0m"
 
-re: fclean $(NAME)
+re: fclean $(LIB_NAME)
 
 # **************************************************************************** #
 # TEST COMMANDS  		    												   #

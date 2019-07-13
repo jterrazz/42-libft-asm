@@ -1,26 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memset.c                                        :+:      :+:    :+:   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jterrazz <jterrazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/07/13 14:32:10 by jterrazz          #+#    #+#             */
-/*   Updated: 2019/07/13 14:32:11 by jterrazz         ###   ########.fr       */
+/*   Created: 2019/07/13 14:32:20 by jterrazz          #+#    #+#             */
+/*   Updated: 2019/07/13 14:42:04 by jterrazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./test.h"
-
-void test_ft_memset()
+#include <stdio.h>//del
+void test_ft_strrchr()
 {
-	char arr[5];
-	void *a;
-
-	arr[0] = 'y';
-	arr[4] = 'y';
-	a = ft_memset(arr, 0, 5);
-	assert(arr[0] == 0);
-	assert(arr[4] == 0);
-	assert(a == arr);
+	char *a = "123";
+	assert(ft_strrchr(a, '1') == a);
+	assert(ft_strrchr(a, '2') == a + 1);
+	assert(ft_strrchr(a, '3') == a + 2);
+	assert(ft_strrchr(a, '\0') == a + 3);
+	assert(ft_strrchr(a, 'q') == NULL);
 }
