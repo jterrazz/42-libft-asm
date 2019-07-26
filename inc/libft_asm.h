@@ -6,7 +6,7 @@
 /*   By: jterrazz <jterrazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/04 14:55:53 by jterrazz          #+#    #+#             */
-/*   Updated: 2019/07/26 21:06:26 by jterrazz         ###   ########.fr       */
+/*   Updated: 2019/07/26 21:56:27 by jterrazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,11 +34,11 @@ void *ft_memcpy(void *restrict dst, const void *retrict, size_t n);
 char *ft_strdup(const char *s1);
 void ft_cat(int fd);
 char *ft_strrchr(const char *s, int c);
-void test_ft_cat();
 char			*ft_strncpy(char *dst, const char *src, size_t len);
 void			*ft_memalloc(size_t size);
 void			*ft_memmove(void *dst, const void *src, size_t len);
 void			ft_memdel(void **ap);
 void			ft_putnbr(int n);
+char *ft_strcat(char *restrict s1, const char *restrict s2);
 
 #endif

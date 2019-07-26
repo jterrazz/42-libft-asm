@@ -6,7 +6,7 @@
 /*   By: jterrazz <jterrazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/13 14:49:32 by jterrazz          #+#    #+#             */
-/*   Updated: 2019/07/13 16:40:41 by jterrazz         ###   ########.fr       */
+/*   Updated: 2019/07/26 22:03:37 by jterrazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,7 @@ void test_ft_memmove()
 	assert(c[5] == 'i');
 
 	char *d = ft_strdup("This is a sentence01234");
-	printf("%s\n", d);
 	ft_memmove(d + 5, d, 17);
-	printf("%s\n", d);
 	assert(d[22] == 'e');
 	assert(d[5] == 'T');
 }
