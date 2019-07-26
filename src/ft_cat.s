@@ -6,7 +6,7 @@
 ;    By: jterrazz <jterrazz@student.42.fr>          +#+  +:+       +#+         ;
 ;                                                 +#+#+#+#+#+   +#+            ;
 ;    Created: 2019/07/05 02:36:42 by jterrazz          #+#    #+#              ;
-;    Updated: 2019/07/26 21:20:38 by jterrazz         ###   ########.fr        ;
+;    Updated: 2019/07/26 21:30:35 by jterrazz         ###   ########.fr        ;
 ;                                                                              ;
 ; **************************************************************************** ;
 
@@ -32,6 +32,7 @@ read:
 	lea rsi, [rel BUFFER]
 	mov rdx, BUFFER.SIZE
 	syscall
+	jc return
 	cmp rax, 0
 	jle return
 
@@ -41,6 +42,7 @@ write:
 	mov rdx, rax
 	mov rax, SYS_WRITE
 	syscall
+	jc return
 
 needs_more_read:
 	cmp rax, 0
