@@ -6,7 +6,7 @@
 ;    By: jterrazz <jterrazz@student.42.fr>          +#+  +:+       +#+         ;
 ;                                                 +#+#+#+#+#+   +#+            ;
 ;    Created: 2019/07/05 02:36:42 by jterrazz          #+#    #+#              ;
-;    Updated: 2019/07/05 13:26:11 by jterrazz         ###   ########.fr        ;
+;    Updated: 2019/07/26 21:20:38 by jterrazz         ###   ########.fr        ;
 ;                                                                              ;
 ; **************************************************************************** ;
 
@@ -17,9 +17,9 @@ SYS_READ equ 0x2000003
 SYS_WRITE equ 0x2000004
 STDOUT equ 1
 
-section .bss
-BUFFER resb 255 ; reserve bytes
-.SIZE equ $ - BUFFER ; learn more of this, probably does diff between addresses to get length
+section .data
+BUFFER times 255 db 0
+.SIZE equ $ - BUFFER ; Size of the buffer by substracting addresses
 
 section .text
 
@@ -27,14 +27,12 @@ _ft_cat:
 	enter 0, 0
 
 read:
-	push rdi ; fd
-	mov rax, SYS_READ ; read cmd
-	lea rsi, [rel BUFFER] ; address
-	mov rdx, BUFFER.SIZE ; length
+	push rdi
+	mov rax, SYS_READ
+	lea rsi, [rel BUFFER]
+	mov rdx, BUFFER.SIZE
 	syscall
-	jc return
-	; jc return; why ?
-	cmp rax, 0 ; rax -1 if error, 0 if end
+	cmp rax, 0
 	jle return
 
 write:
@@ -43,7 +41,8 @@ write:
 	mov rdx, rax
 	mov rax, SYS_WRITE
 	syscall
-	jc return
+
+needs_more_read:
 	cmp rax, 0
 	jl return
 	pop rdi

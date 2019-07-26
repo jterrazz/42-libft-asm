@@ -28,9 +28,8 @@ int main(void)
 	// test_ft_memset();
 	// test_ft_memcpy();
 	// test_ft_strdup();
-	// test_ft_cat();
 	// test_ft_memalloc();
-	test_ft_strcat();
+	// test_ft_strcat();
 	// test_ft_putnbr();
 	// test_ft_memdel();
 	// test_ft_memmove();
