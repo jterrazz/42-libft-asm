@@ -6,13 +6,11 @@
 ;    By: jterrazz <jterrazz@student.42.fr>          +#+  +:+       +#+         ;
 ;                                                 +#+#+#+#+#+   +#+            ;
 ;    Created: 2019/07/13 14:48:19 by jterrazz          #+#    #+#              ;
-;    Updated: 2019/07/13 15:29:51 by jterrazz         ###   ########.fr        ;
+;    Updated: 2019/07/27 01:44:15 by jterrazz         ###   ########.fr        ;
 ;                                                                              ;
 ; **************************************************************************** ;
 
 global _ft_strncpy
-
-; char	*ft_strncpy(char *dst, const char *src, size_t len)
 
 _ft_strncpy:
 	mov r12, 0
@@ -20,9 +18,9 @@ _ft_strncpy:
 copy_str:
 	; While *src copy into dst, and i++
 	mov r8b, byte[rsi]
-	test r8b, r8b
+	test r8b, r8b ; *src == 0
 	jz fill_blank
-	cmp r12, rdx
+	cmp r12, rdx ; i == size
 	jge fill_blank
 	mov r9b, byte[rsi]
 	mov byte[rdi], r9b
@@ -32,7 +30,7 @@ copy_str:
 	jmp copy_str
 
 fill_blank:
-	; While i < len
+	; While i < size, set to 0
 	cmp r12, rdx
 	jge return
 	mov byte[rdi], 0

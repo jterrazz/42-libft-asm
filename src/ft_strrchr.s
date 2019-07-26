@@ -6,11 +6,9 @@
 ;    By: jterrazz <jterrazz@student.42.fr>          +#+  +:+       +#+         ;
 ;                                                 +#+#+#+#+#+   +#+            ;
 ;    Created: 2019/07/13 14:12:54 by jterrazz          #+#    #+#              ;
-;    Updated: 2019/07/26 21:58:34 by jterrazz         ###   ########.fr        ;
+;    Updated: 2019/07/27 01:46:39 by jterrazz         ###   ########.fr        ;
 ;                                                                              ;
 ; **************************************************************************** ;
-
-; char	*ft_strrchr(const char *s, int c)
 
 global _ft_strrchr
 

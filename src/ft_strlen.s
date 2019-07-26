@@ -6,23 +6,23 @@
 ;    By: jterrazz <jterrazz@student.42.fr>          +#+  +:+       +#+         ;
 ;                                                 +#+#+#+#+#+   +#+            ;
 ;    Created: 2019/07/04 22:45:16 by jterrazz          #+#    #+#              ;
-;    Updated: 2019/07/26 20:24:06 by jterrazz         ###   ########.fr        ;
+;    Updated: 2019/07/27 01:12:57 by jterrazz         ###   ########.fr        ;
 ;                                                                              ;
 ; **************************************************************************** ;
 
 global _ft_strlen
 
 _ft_strlen:
-	xor rcx, rcx ; 0
-	xor al, al ; 0
-	not rcx ; with unsigned, exc hold the highest value possible
+	xor al, al ; Will search for value 0
+	xor rcx, rcx ; Will receive the length, set to 0
+	not rcx ; Because rcx is unsigned, using not will set it max value
 
-	; go throught the rdi str until al value is found, decreasing ecx each step
 	cld
-	repne scasb
+	repne scasb ; Parse rsi until is al value, it decrease ecx each step
 
-	; now ecx equals - strlen - 2 (1 because not made it overflow, 1 because it counts finding null as a step)
-	not rcx ; Reverse it and substract 1
-	dec rcx;
+	; Now ecx = - strlen - 2
+	; (1 for the overflow, 1 because the last value searched counts)
+	not rcx
+	dec rcx
 	mov rax, rcx;
 	ret
