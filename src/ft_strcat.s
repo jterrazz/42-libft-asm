@@ -1,37 +1,41 @@
 ; **************************************************************************** ;
 ;                                                                              ;
 ;                                                         :::      ::::::::    ;
-;    ft_strrchr.s                                       :+:      :+:    :+:    ;
+;    ft_strcat.s                                        :+:      :+:    :+:    ;
 ;                                                     +:+ +:+         +:+      ;
 ;    By: jterrazz <jterrazz@student.42.fr>          +#+  +:+       +#+         ;
 ;                                                 +#+#+#+#+#+   +#+            ;
-;    Created: 2019/07/13 14:12:54 by jterrazz          #+#    #+#              ;
-;    Updated: 2019/07/25 13:57:15 by jterrazz         ###   ########.fr        ;
+;    Created: 2019/07/26 20:15:00 by jterrazz          #+#    #+#              ;
+;    Updated: 2019/07/26 20:51:24 by jterrazz         ###   ########.fr        ;
 ;                                                                              ;
 ; **************************************************************************** ;
 
-; char	*ft_strrchr(const char *s, int c)
+global _ft_strcat
 
-global _ft_strrchr
+section .text
 
-_ft_strrchr:
-	mov rax, 0
-	test rdi, rdi; Need to secure the ptr in arg
-	jz return
-	mov dl, byte[rdi]
-	test dl, dl ; Compare value of *ptr to zero
-	jz str_eol
-	cmp dl, sil  ; Compare value of *ptr to c
-	je found
-	inc rdi
-	jmp _ft_strrchr
-
-str_eol:
-	test sil, sil ; See if searched value is '\0'
-	jnz return
-
-found:
+_ft_strcat:
 	mov rax, rdi
+
+go_to_s1_end:
+	mov dl, byte[rdi]
+	test dl, dl
+	jz copy_s2_to_s1
+	inc rdi
+	jmp go_to_s1_end
+
+copy_s2_to_s1:
+	mov dl, byte[rsi]
+	test dl, dl
+	jz terminate_str
+	mov dl, byte[rsi]
+	mov byte[rdi], dl
+	inc rdi
+	inc rsi
+	jmp copy_s2_to_s1
+
+terminate_str:
+	mov byte[rdi], 0
 
 return:
 	ret

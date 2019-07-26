@@ -6,7 +6,7 @@
 /*   By: jterrazz <jterrazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/04 14:55:53 by jterrazz          #+#    #+#             */
-/*   Updated: 2019/07/13 17:47:42 by jterrazz         ###   ########.fr       */
+/*   Updated: 2019/07/26 20:38:25 by jterrazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 // TODO Check prototypes are equals
 
 void ft_bzero(void *sl, size_t n);
+char *ft_strcat(char *restrict s1, const char *restrict s2);
 int ft_isalpha(int c);
 int ft_isupper(int c);
 int ft_islower(int c);

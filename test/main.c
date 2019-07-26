@@ -30,7 +30,8 @@ int main(void)
 	// test_ft_strdup();
 	// test_ft_cat();
 	// test_ft_memalloc();
-	test_ft_putnbr();
+	test_ft_strcat();
+	// test_ft_putnbr();
 	// test_ft_memdel();
 	// test_ft_memmove();
 	// test_ft_strncpy();

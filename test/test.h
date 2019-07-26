@@ -5,6 +5,7 @@
 
 int assert(int cond);
 
+void test_ft_strcat();
 void test_ft_bzero();
 void test_ft_isalpha();
 void test_ft_isupper();
