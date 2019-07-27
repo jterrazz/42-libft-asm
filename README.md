@@ -1,20 +1,18 @@
-Requirements nasm
+# ft-libft-asm
+
+Implementation of some libc functions in the Assembly language.
+
+## How to use
+You'll need **nasm** for compilation.
 
 `brew install nasm`
 
-How to compile in asm
-nasm -f macho64
+The Makefile by default sets the macho64 format `nasm -f macho64`.
 
-To get all the format accepted by NASM:
-`nasm -hf`
-
-
-Debugging
-`brew install gdb`
-
-Methods:
+### Library methods:
 ``` c
 void ft_bzero(void *sl, size_t n);
+char *ft_strcat(char *restrict s1, const char *restrict s2);
 int ft_isalpha(int c);
 int ft_isupper(int c);
 int ft_islower(int c);
@@ -40,3 +38,10 @@ void			*ft_memalloc(size_t size);
 void			*ft_memmove(void *dst, const void *src, size_t len);
 void			ft_memdel(void **ap);
 ```
+
+## Testing
+The [42FileChecker](https://github.com/jgigault/42FileChecker) supports the libft-asm library.
+Locally you can also `make test` and run `sh ./test_libfts`.
+
+### Debugging
+`brew install gdb`
