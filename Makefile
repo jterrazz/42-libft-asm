@@ -6,7 +6,7 @@
 #    By: jterrazz <jterrazz@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/07/04 16:05:42 by jterrazz          #+#    #+#              #
-#    Updated: 2019/07/27 20:53:41 by jterrazz         ###   ########.fr        #
+#    Updated: 2019/07/27 20:59:24 by jterrazz         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,7 +43,7 @@ CC = gcc
 CC_FLAGS = -Wall -Wextra -Werror
 
 NAME = libfts.a
-TEST_NAME = test_libfts
+TEST_NAME = libfts_test
 
 # **************************************************************************** #
 # COMMANDS  		    													   #
@@ -55,10 +55,11 @@ all: $(NAME)
 
 $(NAME): $(OBJECTS)
 	@ar rcs $@ $^
+	@echo "$(NAME) created"
 
 $(BUILD_PATH)/%.o: $(SRC_PATH)/%.s
 	@mkdir -p $(@D)
-	@$(ASM_CC) $(ASM_FLAGS) $< -o $@
+	$(ASM_CC) $(ASM_FLAGS) $< -o $@
 
 clean:
 	@rm -rf $(TMP_PATH)
@@ -76,6 +77,7 @@ re: fclean $(NAME)
 
 test: all $(T_OBJECTS)
 	@$(CC) $(CC_FLAGS) -o $(TEST_NAME) $(T_OBJECTS) $(NAME) -I $(INC_PATH)
+	@echo "$(TEST_NAME) created"
 
 $(T_BUILD_PATH)/%.o: $(T_SRC_PATH)/%.c
 	@mkdir -p $(@D)
