@@ -6,11 +6,9 @@
 #    By: jterrazz <jterrazz@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/07/04 16:05:42 by jterrazz          #+#    #+#              #
-#    Updated: 2019/07/26 22:10:36 by jterrazz         ###   ########.fr        #
+#    Updated: 2019/07/27 20:53:41 by jterrazz         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
-
-# put all in int ? (in asem=embly)
 
 INC_PATH = inc
 LIB_PATH = lib
@@ -31,7 +29,7 @@ T_SOURCES = main.c ft_bzero.c ft_isupper.c ft_islower.c ft_isalpha.c \
 	ft_isdigit.c ft_isalnum.c ft_isascii.c ft_isprint.c ft_toupper.c ft_tolower.c \
 	ft_strlen.c ft_puts.c ft_memset.c ft_memcpy.c ft_strdup.c ft_strrchr.c \
 	ft_strncpy.c ft_memalloc.c ft_memmove.c ft_memdel.c \
-	ft_putnbr.c ft_strcat.c
+	ft_putnbr.c ft_strcat.c ft_cat.c
 T_OBJECTS = $(T_SOURCES:%.c=$(T_BUILD_PATH)/%.o)
 
 # **************************************************************************** #
@@ -60,13 +58,13 @@ $(NAME): $(OBJECTS)
 
 $(BUILD_PATH)/%.o: $(SRC_PATH)/%.s
 	@mkdir -p $(@D)
-	@$(ASM_CC) $(ASM_FLAGS) $< -o $@ # Maybe include .h ?
+	@$(ASM_CC) $(ASM_FLAGS) $< -o $@
 
 clean:
 	@rm -rf $(TMP_PATH)
 	@echo "Clean \033[33mok\033[0m"
 
-fclean: clean
+fclean: tclean clean
 	@rm -f $(NAME)
 	@echo "Fclean \033[33mok\033[0m"
 
@@ -76,7 +74,6 @@ re: fclean $(NAME)
 # TEST COMMANDS  		    												   #
 # **************************************************************************** #
 
-# Maybe put the main.c file in root (depend of the subject)
 test: all $(T_OBJECTS)
 	@$(CC) $(CC_FLAGS) -o $(TEST_NAME) $(T_OBJECTS) $(NAME) -I $(INC_PATH)
 
@@ -84,6 +81,6 @@ $(T_BUILD_PATH)/%.o: $(T_SRC_PATH)/%.c
 	@mkdir -p $(@D)
 	$(CC) $(CC_FLAGS) -c -o $@ $< -I $(INC_PATH)
 
-tclean: fclean
+tclean:
 	@rm -rf $(T_BUILD_PATH)
 	@rm -f $(TEST_NAME)

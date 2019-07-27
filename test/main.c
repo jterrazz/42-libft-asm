@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jterrazz <jterrazz@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/07/27 20:47:31 by jterrazz          #+#    #+#             */
+/*   Updated: 2019/07/27 20:49:52 by jterrazz         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "./test.h"
 #include <stdio.h>
 
@@ -11,7 +23,7 @@ int assert(int cond)
 	return 0;
 }
 
-int main(void)
+int main(int argc, char **argv)
 {
 	test_ft_bzero();
 	test_ft_isalpha();
@@ -35,4 +47,5 @@ int main(void)
 	test_ft_memmove();
 	test_ft_strncpy();
 	test_ft_strrchr();
+	test_ft_cat(argc, argv);
 }

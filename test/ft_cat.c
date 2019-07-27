@@ -6,15 +6,14 @@
 /*   By: jterrazz <jterrazz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/04 20:20:19 by jterrazz          #+#    #+#             */
-/*   Updated: 2019/07/26 21:08:01 by jterrazz         ###   ########.fr       */
+/*   Updated: 2019/07/27 20:50:41 by jterrazz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "./test.h"
 #include <fcntl.h>
 
-void ft_cat(int fd);
-
-int main(int argc, char **argv)
+int		test_ft_cat(int argc, char **argv)
 {
 	ft_cat(0);
 	ft_cat(open(__FILE__, O_RDONLY));
