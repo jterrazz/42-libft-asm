@@ -1,16 +1,30 @@
 # ft-libft-asm
 
-Implementation of some libc functions in the Assembly language.
+>  Basic functions written in Assembly using the x86 Intel syntax.
 
-## How to use
-You'll need **nasm** for compilation.
+## Getting started
 
-`brew install nasm`
+### Requirements
 
-The Makefile by default sets the macho64 format `nasm -f macho64`.
+- nasm: `brew install nasm`
 
-### Library methods:
-``` c
+### Installation
+
+```bash
+make # defaults to -f macho64
+```
+
+### Testing
+
+The [42FileChecker](https://github.com/jgigault/42FileChecker) supports the libft-asm library. Also use `make test` and run `sh ./test_libfts`.
+
+### Debugging
+
+- gdb: `brew install gdb`
+
+## Methods
+
+```c
 void ft_bzero(void *sl, size_t n);
 char *ft_strcat(char *restrict s1, const char *restrict s2);
 int ft_isalpha(int c);
@@ -28,20 +42,10 @@ void *ft_memset(void *b, int c, size_t len);
 void *ft_memcpy(void *restrict dst, const void *retrict, size_t n);
 char *ft_strdup(const char *s1);
 void ft_cat(int fd);
-```
 
-Bonus methods
-``` c
 char *ft_strrchr(const char *s, int c);
 char *ft_strncpy(char *dst, const char *src, size_t len);
-void			*ft_memalloc(size_t size);
-void			*ft_memmove(void *dst, const void *src, size_t len);
-void			ft_memdel(void **ap);
+void *ft_memalloc(size_t size);
+void *ft_memmove(void *dst, const void *src, size_t len);
+void ft_memdel(void **ap);
 ```
-
-## Testing
-The [42FileChecker](https://github.com/jgigault/42FileChecker) supports the libft-asm library.
-Locally you can also `make test` and run `sh ./test_libfts`.
-
-### Debugging
-`brew install gdb`
