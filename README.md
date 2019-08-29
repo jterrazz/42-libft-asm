@@ -2,6 +2,8 @@
 
 >  Basic functions written in Assembly using the x86 Intel syntax.
 
+[To better understand this projects, access my medium article here](https://medium.com/a-42-journey/a-quick-guide-to-code-your-first-assembly-functions-43c2032ebfda)
+
 ## Getting started
 
 ### Requirements
