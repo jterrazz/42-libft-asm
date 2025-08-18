@@ -4,7 +4,7 @@
 
 >  Basic functions written in Assembly using the x86 Intel syntax.
 
-[To better understand this projects, access my medium article here](https://www.jterrazz.com/articles/5-your-first-x86-64-assembly-routines)
+[To better understand this projects, access my medium article here](https://www.jterrazz.com/articles/5-lets-dive-into-assembly-and-build-our-first-functions-intel-x86-64)
 
 ## Getting started
 
